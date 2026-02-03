@@ -79,7 +79,8 @@ function unlockPage() {
 
 function handleUnlock() {
   const value = lockInput.value.trim();
-  if (value === PAGE_PASSWORD) {
+  const normalized = value.replace(/\D/g, "");
+  if (normalized === PAGE_PASSWORD) {
     lockHint.textContent = "";
     unlockPage();
     surpriseButton.focus();
