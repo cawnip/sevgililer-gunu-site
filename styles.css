@@ -1,0 +1,352 @@
+:root {
+  color-scheme: light;
+  --bg: #fff7f2;
+  --bg-soft: #fbe7df;
+  --rose: #e77c8d;
+  --rose-dark: #c65c70;
+  --text: #2f1b1f;
+  --muted: #7c6067;
+  --card: #fffdfc;
+  --shadow: 0 24px 50px rgba(231, 124, 141, 0.18);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Avenir", "Gill Sans", "Optima", "Trebuchet MS", sans-serif;
+  color: var(--text);
+  background: radial-gradient(circle at top, #fff, var(--bg));
+  min-height: 100vh;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  padding-bottom: 4rem;
+}
+
+h1,
+h2 {
+  font-family: "Garamond", "Palatino Linotype", "Book Antiqua", serif;
+  margin: 0;
+}
+
+p {
+  margin: 0;
+  line-height: 1.7;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 0.75rem;
+  color: var(--muted);
+  margin-bottom: 0.75rem;
+}
+
+.hero {
+  padding: 5.5rem 1.5rem 4rem;
+  display: grid;
+  gap: 2.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-content {
+  max-width: 540px;
+  z-index: 1;
+}
+
+.hero h1 {
+  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  margin-bottom: 0.75rem;
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  color: var(--muted);
+  margin-bottom: 2rem;
+}
+
+.primary-btn {
+  background: var(--rose);
+  border: none;
+  color: #fff;
+  padding: 0.85rem 2.2rem;
+  border-radius: 999px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 12px 25px rgba(231, 124, 141, 0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.music-btn {
+  margin-left: 0.75rem;
+  background: transparent;
+  border: 1px solid rgba(231, 124, 141, 0.4);
+  color: var(--rose-dark);
+  padding: 0.8rem 1.8rem;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+}
+
+.music-btn:hover {
+  transform: translateY(-2px);
+  background: rgba(231, 124, 141, 0.12);
+  border-color: rgba(231, 124, 141, 0.6);
+}
+
+.music-btn:focus-visible {
+  outline: 3px solid rgba(231, 124, 141, 0.5);
+  outline-offset: 4px;
+}
+
+.music-btn.is-on {
+  background: rgba(231, 124, 141, 0.18);
+  border-color: rgba(231, 124, 141, 0.7);
+}
+
+.primary-btn:focus-visible {
+  outline: 3px solid rgba(231, 124, 141, 0.5);
+  outline-offset: 4px;
+}
+
+.primary-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 30px rgba(231, 124, 141, 0.45);
+}
+
+.timer {
+  margin-top: 2.5rem;
+  padding: 1.5rem 1.8rem;
+  background: var(--card);
+  border-radius: 24px;
+  box-shadow: var(--shadow);
+}
+
+.timer-label {
+  font-size: 0.95rem;
+  color: var(--muted);
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.timer-values {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+  text-align: center;
+}
+
+.timer-values span {
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+.timer-values small {
+  display: block;
+  color: var(--muted);
+  margin-top: 0.3rem;
+}
+
+.hero-decor {
+  position: absolute;
+  inset: auto -20% -25% auto;
+  width: 420px;
+  height: 420px;
+  background: radial-gradient(circle, rgba(231, 124, 141, 0.2), transparent 70%);
+  border-radius: 50%;
+}
+
+.gallery {
+  padding: 0 1.5rem;
+  text-align: center;
+}
+
+.gallery h2 {
+  font-size: clamp(2rem, 3vw, 2.8rem);
+  margin-bottom: 0.5rem;
+}
+
+.section-subtitle {
+  color: var(--muted);
+  margin-bottom: 2rem;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1.25rem;
+}
+
+.gallery-item {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 16px 30px rgba(47, 27, 31, 0.08);
+}
+
+.gallery-item:focus-visible {
+  outline: 3px solid rgba(231, 124, 141, 0.5);
+  outline-offset: 4px;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  aspect-ratio: 4 / 5;
+  transition: transform 0.3s ease;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.05);
+}
+
+.letter {
+  padding: 0 1.5rem;
+}
+
+.letter-card {
+  max-width: 760px;
+  margin: 0 auto;
+  background: var(--card);
+  border-radius: 30px;
+  padding: 3rem 2.5rem;
+  box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+.letter-card::after {
+  content: "";
+  position: absolute;
+  inset: -30% auto auto -20%;
+  width: 280px;
+  height: 280px;
+  background: radial-gradient(circle, rgba(231, 124, 141, 0.2), transparent 70%);
+  border-radius: 50%;
+}
+
+.letter-card h2 {
+  font-size: clamp(2rem, 3vw, 2.6rem);
+  margin-bottom: 1.2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.letter-text {
+  margin-bottom: 1.3rem;
+  color: var(--muted);
+  position: relative;
+  z-index: 1;
+}
+
+.final {
+  position: relative;
+  min-height: 320px;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  background: linear-gradient(140deg, #fff, #fde6ea);
+  overflow: hidden;
+}
+
+.final-content {
+  position: relative;
+  z-index: 1;
+}
+
+.final h2 {
+  font-size: clamp(2rem, 3vw, 2.8rem);
+  margin-bottom: 0.5rem;
+}
+
+.final p {
+  color: var(--muted);
+}
+
+#confetti {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(20, 10, 14, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+  padding: 1.5rem;
+}
+
+.lightbox.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.lightbox img {
+  max-width: min(800px, 90vw);
+  max-height: 80vh;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  background: #fff;
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+
+.lightbox-close:focus-visible {
+  outline: 3px solid rgba(231, 124, 141, 0.5);
+  outline-offset: 4px;
+}
+
+@media (min-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 6rem 6rem 4.5rem;
+  }
+
+  .gallery,
+  .letter {
+    padding: 0 6rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .timer-values {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .letter-card {
+    padding: 2.5rem 1.8rem;
+  }
+}

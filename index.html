@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sevgililer Günü Sürprizi</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-content">
+          <p class="eyebrow">Sevgililer Günü Sürprizi</p>
+          <h1 id="hero-title">Seni Seviyorum 💘</h1>
+          <p class="subtitle">Bu sayfa sadece ikimiz için.</p>
+          <button class="primary-btn" type="button" id="surpriseButton">
+            Sürprizi Aç
+          </button>
+          <button class="music-btn" type="button" id="musicToggle" aria-pressed="false">
+            Müzik Aç
+          </button>
+          <div class="timer" aria-live="polite">
+            <span class="timer-label">Birlikte Geçen Süre</span>
+            <div class="timer-values" id="timerValues">
+              <div>
+                <span id="days">0</span>
+                <small>Gün</small>
+              </div>
+              <div>
+                <span id="hours">0</span>
+                <small>Saat</small>
+              </div>
+              <div>
+                <span id="minutes">0</span>
+                <small>Dakika</small>
+              </div>
+              <div>
+                <span id="seconds">0</span>
+                <small>Saniye</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="hero-decor" aria-hidden="true"></div>
+      </section>
+
+      <section class="gallery" aria-labelledby="gallery-title">
+        <h2 id="gallery-title">Anılarımız</h2>
+        <p class="section-subtitle">Birlikte güldüğümüz, sevdiğimiz en güzel anlar.</p>
+        <div class="gallery-grid">
+          <button class="gallery-item" type="button" data-full="assets/photos/photo1.jpg">
+            <img src="assets/photos/photo1.jpg" alt="Anımız 1" loading="lazy" />
+          </button>
+          <button class="gallery-item" type="button" data-full="assets/photos/photo2.jpg">
+            <img src="assets/photos/photo2.jpg" alt="Anımız 2" loading="lazy" />
+          </button>
+          <button class="gallery-item" type="button" data-full="assets/photos/photo3.jpg">
+            <img src="assets/photos/photo3.jpg" alt="Anımız 3" loading="lazy" />
+          </button>
+          <button class="gallery-item" type="button" data-full="assets/photos/photo4.jpg">
+            <img src="assets/photos/photo4.jpg" alt="Anımız 4" loading="lazy" />
+          </button>
+          <button class="gallery-item" type="button" data-full="assets/photos/photo5.jpg">
+            <img src="assets/photos/photo5.jpg" alt="Anımız 5" loading="lazy" />
+          </button>
+          <button class="gallery-item" type="button" data-full="assets/photos/photo6.jpg">
+            <img src="assets/photos/photo6.jpg" alt="Anımız 6" loading="lazy" />
+          </button>
+        </div>
+      </section>
+
+      <section class="letter" id="letter" aria-labelledby="letter-title">
+        <div class="letter-card">
+          <p class="eyebrow">Kalbimden</p>
+          <h2 id="letter-title">Sana Bir Mektup</h2>
+          <p class="letter-text">
+            Sana her baktığımda, kalbimin nasıl hızlandığını bir kez daha
+            hatırlıyorum. Her gülüşün içimi ısıtıyor, her dokunuşun bana huzur
+            veriyor. İyi ki varsın, iyi ki hayatımın en güzel hikayesi sensin.
+          </p>
+          <p class="letter-text">
+            Bu sayfa, birlikte geçirdiğimiz anların küçük bir hatırası. Nice
+            anılar biriktireceğimiz, el ele büyüteceğimiz bir sevgi için…
+          </p>
+        </div>
+      </section>
+
+      <section class="final" aria-labelledby="final-title">
+        <canvas id="confetti" aria-hidden="true"></canvas>
+        <div class="final-content">
+          <h2 id="final-title">İyi ki varsın</h2>
+          <p>Kalbim hep seninle.</p>
+        </div>
+      </section>
+    </main>
+
+    <audio id="bgMusic" src="assets/music/song.mp3" preload="auto"></audio>
+
+    <div class="lightbox" id="lightbox" aria-hidden="true">
+      <button class="lightbox-close" type="button" aria-label="Kapat">×</button>
+      <img id="lightboxImage" src="" alt="Büyük fotoğraf" />
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
