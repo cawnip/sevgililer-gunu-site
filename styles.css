@@ -29,6 +29,71 @@ main {
   padding-bottom: 4rem;
 }
 
+.page-lock {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 1.5rem;
+  background: radial-gradient(circle at top, rgba(255, 255, 255, 0.9), rgba(251, 231, 223, 0.95));
+  backdrop-filter: blur(8px);
+  z-index: 50;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.page-lock.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.lock-card {
+  width: min(420px, 90vw);
+  background: var(--card);
+  border-radius: 28px;
+  padding: 2.5rem 2.2rem;
+  text-align: center;
+  box-shadow: var(--shadow);
+}
+
+.lock-note {
+  margin: 0.6rem 0 1.2rem;
+  color: var(--muted);
+}
+
+.lock-label {
+  display: block;
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin-bottom: 0.4rem;
+}
+
+.lock-input {
+  width: 100%;
+  border-radius: 16px;
+  border: 1px solid rgba(231, 124, 141, 0.35);
+  padding: 0.85rem 1rem;
+  font-size: 1rem;
+  font-family: inherit;
+  margin-bottom: 1rem;
+}
+
+.lock-input:focus {
+  outline: 2px solid rgba(231, 124, 141, 0.45);
+  outline-offset: 2px;
+}
+
+.lock-btn {
+  width: 100%;
+}
+
+.lock-hint {
+  min-height: 1.2rem;
+  margin-top: 0.8rem;
+  color: var(--rose-dark);
+  font-weight: 600;
+}
+
 h1,
 h2 {
   font-family: "Garamond", "Palatino Linotype", "Book Antiqua", serif;
@@ -219,6 +284,10 @@ p {
   padding: 0 1.5rem;
 }
 
+.letter.is-hidden {
+  display: none;
+}
+
 .letter-card {
   max-width: 760px;
   margin: 0 auto;
@@ -228,6 +297,49 @@ p {
   box-shadow: var(--shadow);
   position: relative;
   overflow: hidden;
+}
+
+.letter-overlay {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 2rem;
+  border: none;
+  background: rgba(255, 247, 242, 0.92);
+  color: var(--rose-dark);
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-align: center;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+  z-index: 2;
+}
+
+.letter-overlay:focus-visible {
+  outline: 3px solid rgba(231, 124, 141, 0.5);
+  outline-offset: -6px;
+}
+
+.letter-body {
+  position: relative;
+  z-index: 1;
+  transition: filter 0.3s ease;
+}
+
+.letter-card.is-locked .letter-body {
+  filter: blur(7px);
+  pointer-events: none;
+}
+
+.letter-card.is-open .letter-overlay {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.letter-card.is-open .letter-body {
+  animation: letterOpen 0.6s ease;
+  filter: none;
 }
 
 .letter-card::after {
@@ -252,6 +364,17 @@ p {
   color: var(--muted);
   position: relative;
   z-index: 1;
+}
+
+@keyframes letterOpen {
+  0% {
+    opacity: 0.4;
+    transform: translateY(18px) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 .final {

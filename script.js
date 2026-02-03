@@ -1,8 +1,14 @@
 const startDate = new Date("2024-04-18T00:00:00"); // Burayı kolayca değiştir.
 
 const surpriseButton = document.getElementById("surpriseButton");
+const letterCard = document.getElementById("letterCard");
+const letterToggle = document.getElementById("letterToggle");
 const musicToggle = document.getElementById("musicToggle");
 const bgMusic = document.getElementById("bgMusic");
+const pageLock = document.getElementById("pageLock");
+const lockInput = document.getElementById("lockInput");
+const lockButton = document.getElementById("lockButton");
+const lockHint = document.getElementById("lockHint");
 const letterSection = document.getElementById("letter");
 const lightbox = document.getElementById("lightbox");
 const lightboxImage = document.getElementById("lightboxImage");
@@ -21,6 +27,7 @@ const counters = {
 const hearts = [];
 let isMusicPlaying = false;
 let fadeIntervalId = null;
+const PAGE_PASSWORD = "09052024";
 
 function updateTimer() {
   const now = new Date();
@@ -41,7 +48,36 @@ function updateTimer() {
 }
 
 function scrollToLetter() {
+  letterSection.hidden = false;
+  letterSection.classList.remove("is-hidden");
   letterSection.scrollIntoView({ behavior: "smooth" });
+}
+
+function openLetter() {
+  if (!letterCard.classList.contains("is-locked")) return;
+  letterCard.classList.remove("is-locked");
+  letterCard.classList.add("is-open");
+  letterToggle.setAttribute("aria-pressed", "true");
+}
+
+function unlockPage() {
+  if (!pageLock) return;
+  pageLock.classList.add("is-hidden");
+  setTimeout(() => {
+    pageLock.style.display = "none";
+  }, 300);
+}
+
+function handleUnlock() {
+  const value = lockInput.value.trim();
+  if (value === PAGE_PASSWORD) {
+    lockHint.textContent = "";
+    unlockPage();
+    surpriseButton.focus();
+    return;
+  }
+
+  lockHint.textContent = "İpucu: kalbimde yazıyor";
 }
 
 function clearFade() {
@@ -176,7 +212,14 @@ function animateHearts() {
 }
 
 surpriseButton.addEventListener("click", scrollToLetter);
+letterToggle.addEventListener("click", openLetter);
 musicToggle.addEventListener("click", toggleMusic);
+lockButton.addEventListener("click", handleUnlock);
+lockInput.addEventListener("keydown", (event) => {
+  if (event.key === "Enter") {
+    handleUnlock();
+  }
+});
 
 galleryItems.forEach((item) => {
   item.addEventListener("click", () => {
@@ -201,3 +244,10 @@ updateTimer();
 setInterval(updateTimer, 1000);
 requestAnimationFrame(animateHearts);
 updateMusicUI();
+
+letterSection.classList.add("is-hidden");
+letterSection.hidden = true;
+letterCard.classList.add("is-locked");
+letterCard.classList.remove("is-open");
+letterToggle.setAttribute("aria-pressed", "false");
+lockInput.value = "";

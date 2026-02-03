@@ -7,6 +7,26 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <div class="page-lock" id="pageLock">
+      <div class="lock-card" role="dialog" aria-labelledby="lock-title" aria-modal="true">
+        <p class="eyebrow">Şifreli Sayfa</p>
+        <h2 id="lock-title">Sadece ikimiz biliriz…</h2>
+        <label class="lock-label" for="lockInput">Şifre</label>
+        <input
+          class="lock-input"
+          id="lockInput"
+          type="password"
+          inputmode="numeric"
+          placeholder="Şifre"
+          autocomplete="off"
+          aria-describedby="lockHint"
+        />
+        <button class="primary-btn lock-btn" type="button" id="lockButton">
+          Aç
+        </button>
+        <p class="lock-hint" id="lockHint" role="status" aria-live="polite"></p>
+      </div>
+    </div>
     <main>
       <section class="hero" aria-labelledby="hero-title">
         <div class="hero-content">
@@ -75,19 +95,24 @@
         </div>
       </section>
 
-      <section class="letter" id="letter" aria-labelledby="letter-title">
-        <div class="letter-card">
-          <p class="eyebrow">Kalbimden</p>
-          <h2 id="letter-title">Sana Bir Mektup</h2>
-          <p class="letter-text">
-            Sana her baktığımda, kalbimin nasıl hızlandığını bir kez daha
-            hatırlıyorum. Her gülüşün içimi ısıtıyor, her dokunuşun bana huzur
-            veriyor. İyi ki varsın, iyi ki hayatımın en güzel hikayesi sensin.
-          </p>
-          <p class="letter-text">
-            Bu sayfa, birlikte geçirdiğimiz anların küçük bir hatırası. Nice
-            anılar biriktireceğimiz, el ele büyüteceğimiz bir sevgi için…
-          </p>
+      <section class="letter is-hidden" id="letter" aria-labelledby="letter-title" hidden>
+        <div class="letter-card is-locked" id="letterCard">
+          <button class="letter-overlay" type="button" id="letterToggle" aria-pressed="false">
+            Bu kısmı sadece sen açabilirsin… 💌
+          </button>
+          <div class="letter-body">
+            <p class="eyebrow">Kalbimden</p>
+            <h2 id="letter-title">Sana Bir Mektup</h2>
+            <p class="letter-text">
+              Sana her baktığımda, kalbimin nasıl hızlandığını bir kez daha
+              hatırlıyorum. Her gülüşün içimi ısıtıyor, her dokunuşun bana huzur
+              veriyor. İyi ki varsın, iyi ki hayatımın en güzel hikayesi sensin.
+            </p>
+            <p class="letter-text">
+              Bu sayfa, birlikte geçirdiğimiz anların küçük bir hatırası. Nice
+              anılar biriktireceğimiz, el ele büyüteceğimiz bir sevgi için…
+            </p>
+          </div>
         </div>
       </section>
 
