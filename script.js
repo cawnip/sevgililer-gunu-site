@@ -248,8 +248,15 @@ surpriseButton.addEventListener("click", scrollToLetter);
 letterToggle.addEventListener("click", openLetter);
 musicToggle.addEventListener("click", toggleMusic);
 lockButton.addEventListener("click", handleUnlock);
+lockButton.addEventListener("touchend", handleUnlock);
 lockInput.addEventListener("keydown", (event) => {
   if (event.key === "Enter") {
+    handleUnlock();
+  }
+});
+lockInput.addEventListener("input", () => {
+  const normalized = lockInput.value.replace(/\D/g, "");
+  if (normalized.length >= PAGE_PASSWORD.length) {
     handleUnlock();
   }
 });
