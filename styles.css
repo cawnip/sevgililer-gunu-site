@@ -14,6 +14,10 @@
   box-sizing: border-box;
 }
 
+[hidden] {
+  display: none !important;
+}
+
 body {
   margin: 0;
   font-family: "Avenir", "Gill Sans", "Optima", "Trebuchet MS", sans-serif;
@@ -390,6 +394,8 @@ p {
 .final-content {
   position: relative;
   z-index: 1;
+  display: grid;
+  gap: 0.8rem;
 }
 
 .final h2 {
@@ -399,6 +405,76 @@ p {
 
 .final p {
   color: var(--muted);
+}
+
+.future-btn {
+  margin: 0 auto;
+  background: #fff;
+  border: 1px solid rgba(231, 124, 141, 0.4);
+  color: var(--rose-dark);
+  padding: 0.75rem 1.6rem;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 12px 24px rgba(231, 124, 141, 0.18);
+}
+
+.future-btn:hover {
+  transform: translateY(-2px);
+}
+
+.future-btn:focus-visible {
+  outline: 3px solid rgba(231, 124, 141, 0.5);
+  outline-offset: 4px;
+}
+
+.future-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 6, 8, 0.92);
+  display: grid;
+  place-items: center;
+  padding: 2rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+  z-index: 60;
+}
+
+.future-overlay.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.future-text {
+  max-width: 560px;
+  color: #fbe7df;
+  font-family: "Garamond", "Palatino Linotype", "Book Antiqua", serif;
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
+  line-height: 1.8;
+  text-align: center;
+  min-height: 10rem;
+  white-space: pre-line;
+}
+
+.future-close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.9);
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+
+.future-close:focus-visible {
+  outline: 3px solid rgba(231, 124, 141, 0.5);
+  outline-offset: 4px;
 }
 
 #confetti {

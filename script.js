@@ -9,6 +9,10 @@ const pageLock = document.getElementById("pageLock");
 const lockInput = document.getElementById("lockInput");
 const lockButton = document.getElementById("lockButton");
 const lockHint = document.getElementById("lockHint");
+const futureButton = document.getElementById("futureButton");
+const futureOverlay = document.getElementById("futureOverlay");
+const futureClose = document.getElementById("futureClose");
+const futureText = document.getElementById("futureText");
 const letterSection = document.getElementById("letter");
 const lightbox = document.getElementById("lightbox");
 const lightboxImage = document.getElementById("lightboxImage");
@@ -27,7 +31,9 @@ const counters = {
 const hearts = [];
 let isMusicPlaying = false;
 let fadeIntervalId = null;
-const PAGE_PASSWORD = "09052024";
+const PAGE_PASSWORD = "090524";
+const futureMessage =
+  "Şu an 2031.\nHâlâ elini tutuyorum.\nHâlâ seni çok seviyorum.\nMutlu yıllarımıza AŞŞŞKKKKK.";
 
 function updateTimer() {
   const now = new Date();
@@ -48,6 +54,9 @@ function updateTimer() {
 }
 
 function scrollToLetter() {
+  letterCard.classList.add("is-locked");
+  letterCard.classList.remove("is-open");
+  letterToggle.setAttribute("aria-pressed", "false");
   letterSection.hidden = false;
   letterSection.classList.remove("is-hidden");
   letterSection.scrollIntoView({ behavior: "smooth" });
@@ -78,6 +87,29 @@ function handleUnlock() {
   }
 
   lockHint.textContent = "İpucu: kalbimde yazıyor";
+}
+
+function openFutureMessage() {
+  futureOverlay.classList.add("open");
+  futureOverlay.setAttribute("aria-hidden", "false");
+  futureText.textContent = "";
+  let index = 0;
+
+  const typeNext = () => {
+    if (index <= futureMessage.length) {
+      futureText.textContent = futureMessage.slice(0, index);
+      index += 1;
+      setTimeout(typeNext, 55);
+    }
+  };
+
+  typeNext();
+  futureClose.focus();
+}
+
+function closeFutureMessage() {
+  futureOverlay.classList.remove("open");
+  futureOverlay.setAttribute("aria-hidden", "true");
 }
 
 function clearFade() {
@@ -220,6 +252,13 @@ lockInput.addEventListener("keydown", (event) => {
     handleUnlock();
   }
 });
+futureButton.addEventListener("click", openFutureMessage);
+futureClose.addEventListener("click", closeFutureMessage);
+futureOverlay.addEventListener("click", (event) => {
+  if (event.target === futureOverlay) {
+    closeFutureMessage();
+  }
+});
 
 galleryItems.forEach((item) => {
   item.addEventListener("click", () => {
@@ -251,3 +290,12 @@ letterCard.classList.add("is-locked");
 letterCard.classList.remove("is-open");
 letterToggle.setAttribute("aria-pressed", "false");
 lockInput.value = "";
+
+window.addEventListener("DOMContentLoaded", () => {
+  window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+});
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && futureOverlay.classList.contains("open")) {
+    closeFutureMessage();
+  }
+});
