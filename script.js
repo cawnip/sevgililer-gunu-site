@@ -32,6 +32,7 @@ const hearts = [];
 let isMusicPlaying = false;
 let fadeIntervalId = null;
 const PAGE_PASSWORD = "090524";
+let userTypedLock = false;
 const futureMessage =
   "Şu an 2031.\nHâlâ elini tutuyorum.\nHâlâ seni çok seviyorum.\nMutlu yıllarımıza AŞŞŞKKKKK.";
 
@@ -255,9 +256,15 @@ lockInput.addEventListener("keydown", (event) => {
   }
 });
 lockInput.addEventListener("input", () => {
+  userTypedLock = true;
   const normalized = lockInput.value.replace(/\D/g, "");
   if (normalized.length >= PAGE_PASSWORD.length) {
     handleUnlock();
+  }
+});
+lockInput.addEventListener("focus", () => {
+  if (!userTypedLock) {
+    lockInput.value = "";
   }
 });
 futureButton.addEventListener("click", openFutureMessage);
@@ -298,6 +305,11 @@ letterCard.classList.add("is-locked");
 letterCard.classList.remove("is-open");
 letterToggle.setAttribute("aria-pressed", "false");
 lockInput.value = "";
+setTimeout(() => {
+  if (!userTypedLock) {
+    lockInput.value = "";
+  }
+}, 120);
 
 window.addEventListener("DOMContentLoaded", () => {
   window.scrollTo({ top: 0, left: 0, behavior: "auto" });
